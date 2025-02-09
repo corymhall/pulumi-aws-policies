@@ -37,7 +37,7 @@ export class ElasticMapReduceModifyInstanceGroupsPolicy extends pulumi.Component
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

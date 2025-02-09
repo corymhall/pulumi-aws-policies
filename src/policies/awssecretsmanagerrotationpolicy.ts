@@ -53,7 +53,7 @@ export class AWSSecretsManagerRotationPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

@@ -52,7 +52,7 @@ export class DynamoDBStreamReadPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

@@ -59,7 +59,7 @@ export class S3FullAccessPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

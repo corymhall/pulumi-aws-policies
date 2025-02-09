@@ -36,7 +36,7 @@ export class FilterLogEventsPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

@@ -49,7 +49,7 @@ export class KinesisCrudPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

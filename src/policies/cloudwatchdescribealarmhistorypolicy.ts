@@ -31,7 +31,7 @@ export class CloudWatchDescribeAlarmHistoryPolicy extends pulumi.ComponentResour
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

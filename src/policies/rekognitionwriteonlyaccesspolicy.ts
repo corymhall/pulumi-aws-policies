@@ -37,7 +37,7 @@ export class RekognitionWriteOnlyAccessPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

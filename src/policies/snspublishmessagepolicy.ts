@@ -36,7 +36,7 @@ export class SNSPublishMessagePolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

@@ -37,7 +37,7 @@ export class StepFunctionsExecutionPolicy_v2 extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

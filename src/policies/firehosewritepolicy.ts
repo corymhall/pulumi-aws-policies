@@ -37,7 +37,7 @@ export class FirehoseWritePolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

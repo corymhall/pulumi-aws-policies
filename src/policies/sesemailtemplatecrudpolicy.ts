@@ -36,7 +36,7 @@ export class SESEmailTemplateCrudPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

@@ -36,7 +36,7 @@ export class CodePipelineReadOnlyPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

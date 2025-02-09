@@ -36,7 +36,7 @@ export class ElasticMapReduceTerminateJobFlowsPolicy extends pulumi.ComponentRes
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

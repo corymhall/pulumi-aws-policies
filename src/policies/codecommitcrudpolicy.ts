@@ -97,7 +97,7 @@ export class CodeCommitCrudPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

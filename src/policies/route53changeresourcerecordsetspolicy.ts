@@ -36,7 +36,7 @@ export class Route53ChangeResourceRecordSetsPolicy extends pulumi.ComponentResou
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

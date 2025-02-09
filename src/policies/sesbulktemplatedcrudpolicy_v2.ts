@@ -55,7 +55,7 @@ export class SESBulkTemplatedCrudPolicy_v2 extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

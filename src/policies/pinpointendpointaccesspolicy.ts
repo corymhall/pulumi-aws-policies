@@ -38,7 +38,7 @@ export class PinpointEndpointAccessPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

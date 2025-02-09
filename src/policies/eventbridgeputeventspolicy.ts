@@ -36,7 +36,7 @@ export class EventBridgePutEventsPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

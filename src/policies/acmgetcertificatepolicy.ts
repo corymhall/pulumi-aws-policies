@@ -36,7 +36,7 @@ export class AcmGetCertificatePolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

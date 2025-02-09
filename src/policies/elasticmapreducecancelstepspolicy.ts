@@ -36,7 +36,7 @@ export class ElasticMapReduceCancelStepsPolicy extends pulumi.ComponentResource 
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

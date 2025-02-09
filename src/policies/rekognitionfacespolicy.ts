@@ -32,7 +32,7 @@ export class RekognitionFacesPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

@@ -31,7 +31,7 @@ export class CloudFormationDescribeStacksPolicy extends pulumi.ComponentResource
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

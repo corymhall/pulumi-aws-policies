@@ -36,7 +36,7 @@ export class SESSendBouncePolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

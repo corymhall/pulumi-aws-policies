@@ -36,7 +36,7 @@ export class LambdaInvokePolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

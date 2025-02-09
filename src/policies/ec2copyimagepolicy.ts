@@ -36,7 +36,7 @@ export class EC2CopyImagePolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

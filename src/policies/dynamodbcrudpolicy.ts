@@ -46,7 +46,7 @@ export class DynamoDBCrudPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

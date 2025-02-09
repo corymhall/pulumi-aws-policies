@@ -34,7 +34,7 @@ export class CloudWatchDashboardPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

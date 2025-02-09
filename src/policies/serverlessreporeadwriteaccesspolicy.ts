@@ -37,7 +37,7 @@ export class ServerlessRepoReadWriteAccessPolicy extends pulumi.ComponentResourc
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

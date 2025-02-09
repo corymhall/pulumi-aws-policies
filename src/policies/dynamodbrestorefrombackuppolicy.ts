@@ -51,7 +51,7 @@ export class DynamoDBRestoreFromBackupPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

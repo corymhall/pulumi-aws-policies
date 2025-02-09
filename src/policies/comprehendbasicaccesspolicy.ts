@@ -38,7 +38,7 @@ export class ComprehendBasicAccessPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

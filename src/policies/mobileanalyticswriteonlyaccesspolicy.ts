@@ -31,7 +31,7 @@ export class MobileAnalyticsWriteOnlyAccessPolicy extends pulumi.ComponentResour
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

@@ -47,7 +47,7 @@ export class SSMParameterWithSlashPrefixReadPolicy extends pulumi.ComponentResou
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

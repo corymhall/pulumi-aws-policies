@@ -36,7 +36,7 @@ export class SageMakerCreateEndpointConfigPolicy extends pulumi.ComponentResourc
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

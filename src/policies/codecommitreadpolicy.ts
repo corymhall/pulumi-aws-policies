@@ -68,7 +68,7 @@ export class CodeCommitReadPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

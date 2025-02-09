@@ -32,7 +32,7 @@ export class RekognitionLabelsPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

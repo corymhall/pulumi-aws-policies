@@ -31,7 +31,7 @@ export class OrganizationsListAccountsPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

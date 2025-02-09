@@ -32,7 +32,7 @@ export class TextractGetResultPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

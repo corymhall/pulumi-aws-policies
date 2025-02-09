@@ -36,7 +36,7 @@ export class EcsRunTaskPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

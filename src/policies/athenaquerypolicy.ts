@@ -64,7 +64,7 @@ export class AthenaQueryPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

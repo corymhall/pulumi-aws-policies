@@ -65,7 +65,7 @@ export class Code extends SourceCode {
 
     this.close('],');
     this.close('}');
-    this.close('});');
+    this.close('}, opts);');
 
     this.closeCode();
   }

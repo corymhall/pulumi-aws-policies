@@ -36,7 +36,7 @@ export class DynamoDBReconfigurePolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

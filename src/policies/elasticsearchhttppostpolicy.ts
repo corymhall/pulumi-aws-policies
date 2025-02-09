@@ -37,7 +37,7 @@ export class ElasticsearchHttpPostPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

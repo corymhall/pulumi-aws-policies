@@ -48,7 +48,7 @@ export class DynamoDBBackupFullAccessPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

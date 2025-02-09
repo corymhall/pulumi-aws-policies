@@ -36,7 +36,7 @@ export class ElasticMapReduceSetTerminationProtectionPolicy extends pulumi.Compo
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

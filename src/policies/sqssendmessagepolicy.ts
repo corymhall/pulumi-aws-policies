@@ -36,7 +36,7 @@ export class SQSSendMessagePolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

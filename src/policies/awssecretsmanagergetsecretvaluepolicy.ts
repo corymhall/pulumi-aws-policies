@@ -36,7 +36,7 @@ export class AWSSecretsManagerGetSecretValuePolicy extends pulumi.ComponentResou
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

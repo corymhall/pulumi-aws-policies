@@ -34,7 +34,7 @@ export class RekognitionDetectOnlyPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

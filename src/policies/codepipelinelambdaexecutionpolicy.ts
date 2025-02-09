@@ -32,7 +32,7 @@ export class CodePipelineLambdaExecutionPolicy extends pulumi.ComponentResource 
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

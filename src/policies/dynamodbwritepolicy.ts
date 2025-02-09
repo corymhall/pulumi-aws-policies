@@ -39,7 +39,7 @@ export class DynamoDBWritePolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

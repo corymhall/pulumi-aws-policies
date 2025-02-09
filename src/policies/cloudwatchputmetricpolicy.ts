@@ -31,7 +31,7 @@ export class CloudWatchPutMetricPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

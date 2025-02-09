@@ -36,7 +36,7 @@ export class KMSEncryptPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

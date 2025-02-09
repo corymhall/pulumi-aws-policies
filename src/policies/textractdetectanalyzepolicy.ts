@@ -34,7 +34,7 @@ export class TextractDetectAnalyzePolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }

@@ -49,7 +49,7 @@ export class KinesisStreamReadPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    });
+    }, opts);
     this.registerOutputs({});
   }
 }
