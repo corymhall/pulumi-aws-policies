@@ -26,3 +26,4 @@ new policies.S3CrudPolicy('s3-policy', {
   roleName: role.name,
 });
 ```
+

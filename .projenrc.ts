@@ -15,10 +15,11 @@ const project = new typescript.TypeScriptProject({
   githubOptions: {
     mergify: false,
     workflows: true,
-    mergeQueue: true,
-    mergeQueueOptions: {
-      targetBranches: ['main'],
-    },
+    // merge queues are not yet available on public personal repos
+    // mergeQueue: true,
+    // mergeQueueOptions: {
+    //   targetBranches: ['main'],
+    // },
   },
   depsUpgradeOptions: {
     workflowOptions: {
