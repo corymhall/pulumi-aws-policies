@@ -1,15 +1,35 @@
 import { JsonPatch, typescript } from 'projen';
-import { NodePackageManager, Transform } from 'projen/lib/javascript';
+import {
+  NodePackageManager,
+  Transform,
+  UpgradeDependenciesSchedule,
+} from 'projen/lib/javascript';
 import { PoliciesGenerator } from './projenrc';
 const project = new typescript.TypeScriptProject({
   defaultReleaseBranch: 'main',
   name: 'pulumi-aws-policies',
   projenrcTs: true,
-  release: false,
+  release: true,
   entrypoint: 'src/index.ts',
+  releaseToNpm: false,
   githubOptions: {
     mergify: false,
-    workflows: false,
+    workflows: true,
+    mergeQueue: true,
+    mergeQueueOptions: {
+      targetBranches: ['main'],
+    },
+  },
+  depsUpgradeOptions: {
+    workflowOptions: {
+      labels: ['auto-approve'],
+      schedule: UpgradeDependenciesSchedule.WEEKLY,
+    },
+  },
+  autoApproveOptions: {
+    label: 'auto-approve',
+    allowedUsernames: ['corymhall'],
+    secret: 'PROJEN_GITHUB_TOKEN',
   },
   prettier: true,
   prettierOptions: {
@@ -54,4 +74,3 @@ jestConfig?.patch(
 new PoliciesGenerator(project, 'policies');
 
 project.synth();
-
