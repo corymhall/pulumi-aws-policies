@@ -171,13 +171,13 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev,peer,prod,optional --filter=@swc/core,@swc/jest,@types/jest,@types/node,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,jest,prettier,projen,ts-jest,ts-node,typescript,@pulumi/aws,@pulumi/aws-native,@pulumi/pulumi"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev,peer,prod,optional --filter=@swc/core,@swc/jest,@types/jest,@types/node,camelcase,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,jest,prettier,projen,ts-jest,ts-node,typescript,@pulumi/aws,@pulumi/aws-native,@pulumi/pulumi"
         },
         {
           "exec": "npm install"
         },
         {
-          "exec": "npm update @swc/core @swc/jest @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint jest jest-junit prettier projen ts-jest ts-node typescript @pulumi/aws @pulumi/aws-native @pulumi/pulumi pulumi-ts-provider"
+          "exec": "npm update @swc/core @swc/jest @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser camelcase constructs eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint jest jest-junit prettier projen ts-jest ts-node typescript @pulumi/aws @pulumi/aws-native @pulumi/pulumi pulumi-ts-provider"
         },
         {
           "exec": "npx projen"

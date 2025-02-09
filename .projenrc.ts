@@ -1,5 +1,6 @@
 import { JsonPatch, typescript } from 'projen';
 import { NodePackageManager, Transform } from 'projen/lib/javascript';
+import { PoliciesGenerator } from './projenrc';
 const project = new typescript.TypeScriptProject({
   defaultReleaseBranch: 'main',
   name: 'pulumi-aws-policies',
@@ -28,7 +29,7 @@ const project = new typescript.TypeScriptProject({
     '@pulumi/aws-native',
     '@pulumi/aws',
   ],
-  devDeps: ['@swc/core', '@swc/jest'],
+  devDeps: ['@swc/core', '@swc/jest', 'camelcase'],
   jestOptions: {
     configFilePath: 'jest.config.json',
   },
@@ -50,5 +51,7 @@ jestConfig?.patch(
   }),
 );
 
+new PoliciesGenerator(project, 'policies');
 
 project.synth();
+
