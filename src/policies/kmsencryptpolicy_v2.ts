@@ -35,7 +35,7 @@ export class KMSEncryptPolicy_v2 extends pulumi.ComponentResource {
               'kms:GenerateDataKeyPairWithoutPlaintext',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:kms:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:key/${args.keyId}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:kms:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:key/${args.keyId}`,
             ],
           },
         ],

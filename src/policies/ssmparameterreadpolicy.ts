@@ -42,7 +42,7 @@ export class SSMParameterReadPolicy extends pulumi.ComponentResource {
               'ssm:GetParametersByPath',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:ssm:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:parameter/${args.parameterName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:ssm:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:parameter/${args.parameterName}`,
             ],
           },
         ],

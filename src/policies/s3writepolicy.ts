@@ -33,8 +33,8 @@ export class S3WritePolicy extends pulumi.ComponentResource {
               's3:PutLifecycleConfiguration',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:s3:::${args.bucketName}`,
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:s3:::${args.bucketName}/*`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:s3:::${args.bucketName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:s3:::${args.bucketName}/*`,
             ],
           },
         ],

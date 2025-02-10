@@ -31,7 +31,7 @@ export class ElasticMapReduceAddJobFlowStepsPolicy extends pulumi.ComponentResou
               'elasticmapreduce:AddJobFlowSteps',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:elasticmapreduce:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:cluster/${args.clusterId}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:elasticmapreduce:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:cluster/${args.clusterId}`,
             ],
           },
         ],

@@ -31,7 +31,7 @@ export class SNSPublishMessagePolicy extends pulumi.ComponentResource {
               'sns:Publish',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:sns:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:${args.topicName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:sns:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:${args.topicName}`,
             ],
           },
         ],

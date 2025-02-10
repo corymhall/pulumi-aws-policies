@@ -31,7 +31,7 @@ export class CodePipelineReadOnlyPolicy extends pulumi.ComponentResource {
               'codepipeline:ListPipelineExecutions',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:codepipeline:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:${args.pipelineName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:codepipeline:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:${args.pipelineName}`,
             ],
           },
         ],

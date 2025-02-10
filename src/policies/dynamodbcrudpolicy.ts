@@ -40,8 +40,8 @@ export class DynamoDBCrudPolicy extends pulumi.ComponentResource {
               'dynamodb:ConditionCheckItem',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:dynamodb:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:table/${args.tableName}`,
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:dynamodb:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:table/${args.tableName}/index/*`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:dynamodb:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:table/${args.tableName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:dynamodb:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:table/${args.tableName}/index/*`,
             ],
           },
         ],

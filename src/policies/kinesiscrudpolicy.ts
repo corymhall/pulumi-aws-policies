@@ -44,7 +44,7 @@ export class KinesisCrudPolicy extends pulumi.ComponentResource {
               'kinesis:RemoveTagsFromStream',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:kinesis:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:stream/${args.streamName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:kinesis:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:stream/${args.streamName}`,
             ],
           },
         ],

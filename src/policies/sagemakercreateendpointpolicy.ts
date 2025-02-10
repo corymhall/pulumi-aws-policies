@@ -31,7 +31,7 @@ export class SageMakerCreateEndpointPolicy extends pulumi.ComponentResource {
               'sagemaker:CreateEndpoint',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:sagemaker:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:endpoint/${args.endpointName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:sagemaker:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:endpoint/${args.endpointName}`,
             ],
           },
         ],

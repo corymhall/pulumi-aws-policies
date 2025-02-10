@@ -31,7 +31,7 @@ export class Route53ChangeResourceRecordSetsPolicy extends pulumi.ComponentResou
               'route53:ChangeResourceRecordSets',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:route53:::hostedzone/${args.hostedZoneId}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:route53:::hostedzone/${args.hostedZoneId}`,
             ],
           },
         ],

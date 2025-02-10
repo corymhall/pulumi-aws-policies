@@ -34,7 +34,7 @@ export class SESCrudPolicy extends pulumi.ComponentResource {
               'ses:VerifyEmailIdentity',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:ses:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:identity/${args.identityName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:ses:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:identity/${args.identityName}`,
             ],
           },
         ],

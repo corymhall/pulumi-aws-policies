@@ -32,7 +32,7 @@ export class PollyFullAccessPolicy extends pulumi.ComponentResource {
               'polly:DeleteLexicon',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:polly:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:lexicon/${args.lexiconName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:polly:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:lexicon/${args.lexiconName}`,
             ],
           },
           {
@@ -44,7 +44,7 @@ export class PollyFullAccessPolicy extends pulumi.ComponentResource {
               'polly:SynthesizeSpeech',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:polly:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:lexicon/*`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:polly:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:lexicon/*`,
             ],
           },
         ],

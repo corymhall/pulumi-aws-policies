@@ -39,8 +39,8 @@ export class SESBulkTemplatedCrudPolicy_v2 extends pulumi.ComponentResource {
               'ses:SendBulkTemplatedEmail',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:ses:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:identity/${args.identityName}`,
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:ses:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:template/${args.templateName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:ses:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:identity/${args.identityName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:ses:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:template/${args.templateName}`,
             ],
           },
           {

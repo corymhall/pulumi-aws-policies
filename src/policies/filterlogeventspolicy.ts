@@ -31,7 +31,7 @@ export class FilterLogEventsPolicy extends pulumi.ComponentResource {
               'logs:FilterLogEvents',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:logs:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:log-group:${args.logGroupName}:log-stream:*`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:logs:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:log-group:${args.logGroupName}:log-stream:*`,
             ],
           },
         ],

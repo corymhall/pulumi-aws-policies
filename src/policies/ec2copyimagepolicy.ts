@@ -31,7 +31,7 @@ export class EC2CopyImagePolicy extends pulumi.ComponentResource {
               'ec2:CopyImage',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:ec2:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:image/${args.imageId}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:ec2:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:image/${args.imageId}`,
             ],
           },
         ],

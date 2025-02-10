@@ -34,11 +34,11 @@ export class AWSSecretsManagerRotationPolicy extends pulumi.ComponentResource {
               'secretsmanager:UpdateSecretVersionStage',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:secretsmanager:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:secret:*`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:secretsmanager:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:secret:*`,
             ],
             Condition: {
               StringEquals: {
-                'secretsmanager:resource/AllowRotationLambdaArn': pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:lambda:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:function:${args.functionName}`,
+                'secretsmanager:resource/AllowRotationLambdaArn': pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:lambda:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:function:${args.functionName}`,
               },
             },
           },

@@ -32,7 +32,7 @@ export class ElasticsearchHttpPostPolicy extends pulumi.ComponentResource {
               'es:ESHttpPut',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:es:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:domain/${args.domainName}/*`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:es:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:domain/${args.domainName}/*`,
             ],
           },
         ],

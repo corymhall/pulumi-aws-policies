@@ -59,7 +59,7 @@ export class AthenaQueryPolicy extends pulumi.ComponentResource {
               'athena:GetWorkGroup',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:athena:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:workgroup/${args.workGroupName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:athena:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:workgroup/${args.workGroupName}`,
             ],
           },
         ],

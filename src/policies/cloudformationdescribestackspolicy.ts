@@ -26,7 +26,7 @@ export class CloudFormationDescribeStacksPolicy extends pulumi.ComponentResource
               'cloudformation:DescribeStacks',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:cloudformation:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:stack/*`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:cloudformation:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:stack/*`,
             ],
           },
         ],

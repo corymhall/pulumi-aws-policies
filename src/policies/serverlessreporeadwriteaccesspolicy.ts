@@ -32,7 +32,7 @@ export class ServerlessRepoReadWriteAccessPolicy extends pulumi.ComponentResourc
               'serverlessrepo:ListApplicationDependencies',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:serverlessrepo:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:applications/*`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:serverlessrepo:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:applications/*`,
             ],
           },
         ],

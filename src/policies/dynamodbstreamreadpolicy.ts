@@ -38,7 +38,7 @@ export class DynamoDBStreamReadPolicy extends pulumi.ComponentResource {
               'dynamodb:GetShardIterator',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:dynamodb:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:table/${args.tableName}/stream/${args.streamName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:dynamodb:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:table/${args.tableName}/stream/${args.streamName}`,
             ],
           },
           {
@@ -47,7 +47,7 @@ export class DynamoDBStreamReadPolicy extends pulumi.ComponentResource {
               'dynamodb:ListStreams',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:dynamodb:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:table/${args.tableName}/stream/*`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:dynamodb:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:table/${args.tableName}/stream/*`,
             ],
           },
         ],

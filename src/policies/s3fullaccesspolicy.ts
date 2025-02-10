@@ -42,7 +42,7 @@ export class S3FullAccessPolicy extends pulumi.ComponentResource {
               's3:PutObjectVersionTagging',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:s3:::${args.bucketName}/*`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:s3:::${args.bucketName}/*`,
             ],
           },
           {
@@ -54,7 +54,7 @@ export class S3FullAccessPolicy extends pulumi.ComponentResource {
               's3:PutLifecycleConfiguration',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:s3:::${args.bucketName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:s3:::${args.bucketName}`,
             ],
           },
         ],

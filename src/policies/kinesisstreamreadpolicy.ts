@@ -32,7 +32,7 @@ export class KinesisStreamReadPolicy extends pulumi.ComponentResource {
               'kinesis:DescribeLimits',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:kinesis:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:stream/*`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:kinesis:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:stream/*`,
             ],
           },
           {
@@ -44,7 +44,7 @@ export class KinesisStreamReadPolicy extends pulumi.ComponentResource {
               'kinesis:GetShardIterator',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:kinesis:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:stream/${args.streamName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:kinesis:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:stream/${args.streamName}`,
             ],
           },
         ],

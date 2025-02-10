@@ -39,8 +39,8 @@ export class S3CrudPolicy extends pulumi.ComponentResource {
               's3:DeleteObject',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:s3:::${args.bucketName}`,
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:s3:::${args.bucketName}/*`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:s3:::${args.bucketName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:s3:::${args.bucketName}/*`,
             ],
           },
         ],

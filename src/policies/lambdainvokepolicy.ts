@@ -31,7 +31,7 @@ export class LambdaInvokePolicy extends pulumi.ComponentResource {
               'lambda:InvokeFunction',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:lambda:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:function:${args.functionName}*`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:lambda:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:function:${args.functionName}*`,
             ],
           },
         ],

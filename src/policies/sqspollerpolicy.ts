@@ -36,7 +36,7 @@ export class SQSPollerPolicy extends pulumi.ComponentResource {
               'sqs:ReceiveMessage',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:sqs:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:${args.queueName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:sqs:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:${args.queueName}`,
             ],
           },
         ],

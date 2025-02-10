@@ -32,7 +32,7 @@ export class RekognitionWriteOnlyAccessPolicy extends pulumi.ComponentResource {
               'rekognition:IndexFaces',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:rekognition:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:collection/${args.collectionId}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:rekognition:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:collection/${args.collectionId}`,
             ],
           },
         ],

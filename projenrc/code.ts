@@ -116,9 +116,12 @@ export class Code extends SourceCode {
       .replace(/Ref\.(\w+)/g, (_, attr) => {
         return `args.${camelCase(attr)}`;
       })
-      .replace('AWS::AccountId', 'aws.getCallerIdentityOutput().accountId')
-      .replace('AWS::Region', 'aws.getRegionOutput().name')
-      .replace('AWS::Partition', 'aws.getPartitionOutput().partition');
+      .replace(
+        'AWS::AccountId',
+        'aws.getCallerIdentityOutput({}, opts).accountId',
+      )
+      .replace('AWS::Region', 'aws.getRegionOutput({}, opts).name')
+      .replace('AWS::Partition', 'aws.getPartitionOutput({}, opts).partition');
   }
 
   protected getReference(resourceType: string, attribute: string): string {

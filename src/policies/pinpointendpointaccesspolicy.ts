@@ -33,7 +33,7 @@ export class PinpointEndpointAccessPolicy extends pulumi.ComponentResource {
               'mobiletargeting:UpdateEndpointsBatch',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:mobiletargeting:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:apps/${args.pinpointApplicationId}/endpoints/*`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:mobiletargeting:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:apps/${args.pinpointApplicationId}/endpoints/*`,
             ],
           },
         ],

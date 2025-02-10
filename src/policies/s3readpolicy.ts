@@ -35,8 +35,8 @@ export class S3ReadPolicy extends pulumi.ComponentResource {
               's3:GetLifecycleConfiguration',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:s3:::${args.bucketName}`,
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:s3:::${args.bucketName}/*`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:s3:::${args.bucketName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:s3:::${args.bucketName}/*`,
             ],
           },
         ],

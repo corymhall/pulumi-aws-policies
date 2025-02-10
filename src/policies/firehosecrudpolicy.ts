@@ -36,7 +36,7 @@ export class FirehoseCrudPolicy extends pulumi.ComponentResource {
               'firehose:UpdateDestination',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:firehose:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:deliverystream/${args.deliveryStreamName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:firehose:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:deliverystream/${args.deliveryStreamName}`,
             ],
           },
         ],

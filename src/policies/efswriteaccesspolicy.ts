@@ -37,11 +37,11 @@ export class EFSWriteAccessPolicy extends pulumi.ComponentResource {
               'elasticfilesystem:ClientWrite',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:elasticfilesystem:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:file-system/${args.fileSystem}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:elasticfilesystem:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:file-system/${args.fileSystem}`,
             ],
             Condition: {
               StringEquals: {
-                'elasticfilesystem:AccessPointArn': pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:elasticfilesystem:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:access-point/${args.accessPoint}`,
+                'elasticfilesystem:AccessPointArn': pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:elasticfilesystem:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:access-point/${args.accessPoint}`,
               },
             },
           },

@@ -33,7 +33,7 @@ export class StepFunctionsCallbackPolicy extends pulumi.ComponentResource {
               'states:SendTaskSuccess',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:states:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:stateMachine:${args.stateMachineName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:states:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:stateMachine:${args.stateMachineName}`,
             ],
           },
         ],

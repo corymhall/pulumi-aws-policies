@@ -31,7 +31,7 @@ export class EventBridgePutEventsPolicy extends pulumi.ComponentResource {
               'events:PutEvents',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:events:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:event-bus/${args.eventBusName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:events:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:event-bus/${args.eventBusName}`,
             ],
           },
         ],

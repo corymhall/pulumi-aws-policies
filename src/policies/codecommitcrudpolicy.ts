@@ -92,7 +92,7 @@ export class CodeCommitCrudPolicy extends pulumi.ComponentResource {
               'codecommit:CancelUploadArchive',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:codecommit:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:${args.repositoryName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:codecommit:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:${args.repositoryName}`,
             ],
           },
         ],

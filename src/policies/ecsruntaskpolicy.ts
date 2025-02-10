@@ -31,7 +31,7 @@ export class EcsRunTaskPolicy extends pulumi.ComponentResource {
               'ecs:RunTask',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:ecs:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:task-definition/${args.taskDefinition}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:ecs:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:task-definition/${args.taskDefinition}`,
             ],
           },
         ],

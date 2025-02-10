@@ -32,7 +32,7 @@ export class DynamoDBBackupFullAccessPolicy extends pulumi.ComponentResource {
               'dynamodb:DescribeContinuousBackups',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:dynamodb:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:table/${args.tableName}`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:dynamodb:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:table/${args.tableName}`,
             ],
           },
           {
@@ -43,7 +43,7 @@ export class DynamoDBBackupFullAccessPolicy extends pulumi.ComponentResource {
               'dynamodb:ListBackups',
             ],
             Resource: [
-              pulumi.interpolate`arn:${aws.getPartitionOutput().partition}:dynamodb:${aws.getRegionOutput().name}:${aws.getCallerIdentityOutput().accountId}:table/${args.tableName}/backup/*`,
+              pulumi.interpolate`arn:${aws.getPartitionOutput({}, opts).partition}:dynamodb:${aws.getRegionOutput({}, opts).name}:${aws.getCallerIdentityOutput({}, opts).accountId}:table/${args.tableName}/backup/*`,
             ],
           },
         ],
