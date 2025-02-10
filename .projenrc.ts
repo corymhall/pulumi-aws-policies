@@ -30,7 +30,6 @@ const project = new typescript.TypeScriptProject({
   autoApproveOptions: {
     label: 'auto-approve',
     allowedUsernames: ['corymhall'],
-    secret: 'PROJEN_GITHUB_TOKEN',
   },
   prettier: true,
   prettierOptions: {
