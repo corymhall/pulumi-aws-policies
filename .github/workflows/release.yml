@@ -82,5 +82,5 @@ jobs:
           VERSION_FILE: dist/version.txt
           CHANGELOG: ""
           RELEASE_TAG_FILE: dist/releasetag.txt
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PROJEN_GITHUB_TOKEN }}
         run: npx projen publish:git
