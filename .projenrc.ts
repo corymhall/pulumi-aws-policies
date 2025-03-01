@@ -24,10 +24,6 @@ const project = new TypeScriptComponent({
   packageManager: NodePackageManager.NPM,
   deps: ['@pulumi/pulumi', '@pulumi/aws-native', '@pulumi/aws'],
   devDeps: ['camelcase', '@hallcor/pulumi-projen-project-types'],
-  // deps: [],                /* Runtime dependencies of this module. */
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],             /* Build dependencies for this module. */
-  // packageName: undefined,  /* The "name" in package.json. */
 });
 
 new PoliciesGenerator(project, 'policies');
