@@ -20,6 +20,10 @@ export interface FilterLogEventsPolicyArgs {
 export class FilterLogEventsPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: FilterLogEventsPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:FilterLogEventsPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -36,7 +40,7 @@ export class FilterLogEventsPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

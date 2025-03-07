@@ -20,6 +20,10 @@ export interface SQSPollerPolicyArgs {
 export class SQSPollerPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: SQSPollerPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:SQSPollerPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -41,7 +45,7 @@ export class SQSPollerPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

@@ -15,6 +15,10 @@ export interface OrganizationsListAccountsPolicyArgs {
 export class OrganizationsListAccountsPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: OrganizationsListAccountsPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:OrganizationsListAccountsPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -31,7 +35,7 @@ export class OrganizationsListAccountsPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

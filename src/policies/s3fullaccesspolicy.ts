@@ -20,6 +20,10 @@ export interface S3FullAccessPolicyArgs {
 export class S3FullAccessPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: S3FullAccessPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:S3FullAccessPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -59,7 +63,7 @@ export class S3FullAccessPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

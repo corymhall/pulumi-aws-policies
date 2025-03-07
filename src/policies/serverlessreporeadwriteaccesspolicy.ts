@@ -15,6 +15,10 @@ export interface ServerlessRepoReadWriteAccessPolicyArgs {
 export class ServerlessRepoReadWriteAccessPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: ServerlessRepoReadWriteAccessPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:ServerlessRepoReadWriteAccessPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -37,7 +41,7 @@ export class ServerlessRepoReadWriteAccessPolicy extends pulumi.ComponentResourc
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

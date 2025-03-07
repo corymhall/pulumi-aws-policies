@@ -20,6 +20,10 @@ export interface EventBridgePutEventsPolicyArgs {
 export class EventBridgePutEventsPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: EventBridgePutEventsPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:EventBridgePutEventsPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -36,7 +40,7 @@ export class EventBridgePutEventsPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

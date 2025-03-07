@@ -20,6 +20,10 @@ export interface SSMParameterWithSlashPrefixReadPolicyArgs {
 export class SSMParameterWithSlashPrefixReadPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: SSMParameterWithSlashPrefixReadPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:SSMParameterWithSlashPrefixReadPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -47,7 +51,7 @@ export class SSMParameterWithSlashPrefixReadPolicy extends pulumi.ComponentResou
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

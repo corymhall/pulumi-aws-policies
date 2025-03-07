@@ -20,6 +20,10 @@ export interface CodeCommitCrudPolicyArgs {
 export class CodeCommitCrudPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: CodeCommitCrudPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:CodeCommitCrudPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -97,7 +101,7 @@ export class CodeCommitCrudPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

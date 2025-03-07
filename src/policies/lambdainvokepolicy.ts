@@ -20,6 +20,10 @@ export interface LambdaInvokePolicyArgs {
 export class LambdaInvokePolicy extends pulumi.ComponentResource {
   constructor(name: string, args: LambdaInvokePolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:LambdaInvokePolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -36,7 +40,7 @@ export class LambdaInvokePolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

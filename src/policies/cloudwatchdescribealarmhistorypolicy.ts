@@ -15,6 +15,10 @@ export interface CloudWatchDescribeAlarmHistoryPolicyArgs {
 export class CloudWatchDescribeAlarmHistoryPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: CloudWatchDescribeAlarmHistoryPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:CloudWatchDescribeAlarmHistoryPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -31,7 +35,7 @@ export class CloudWatchDescribeAlarmHistoryPolicy extends pulumi.ComponentResour
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

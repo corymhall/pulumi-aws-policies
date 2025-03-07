@@ -15,6 +15,10 @@ export interface MobileAnalyticsWriteOnlyAccessPolicyArgs {
 export class MobileAnalyticsWriteOnlyAccessPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: MobileAnalyticsWriteOnlyAccessPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:MobileAnalyticsWriteOnlyAccessPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -31,7 +35,7 @@ export class MobileAnalyticsWriteOnlyAccessPolicy extends pulumi.ComponentResour
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

@@ -20,6 +20,10 @@ export interface CodePipelineReadOnlyPolicyArgs {
 export class CodePipelineReadOnlyPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: CodePipelineReadOnlyPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:CodePipelineReadOnlyPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -36,7 +40,7 @@ export class CodePipelineReadOnlyPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

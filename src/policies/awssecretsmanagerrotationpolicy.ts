@@ -20,6 +20,10 @@ export interface AWSSecretsManagerRotationPolicyArgs {
 export class AWSSecretsManagerRotationPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: AWSSecretsManagerRotationPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:AWSSecretsManagerRotationPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -53,7 +57,7 @@ export class AWSSecretsManagerRotationPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

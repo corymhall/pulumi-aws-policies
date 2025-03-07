@@ -20,6 +20,10 @@ export interface DynamoDBCrudPolicyArgs {
 export class DynamoDBCrudPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: DynamoDBCrudPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:DynamoDBCrudPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -46,7 +50,7 @@ export class DynamoDBCrudPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

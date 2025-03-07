@@ -20,6 +20,10 @@ export interface SQSSendMessagePolicyArgs {
 export class SQSSendMessagePolicy extends pulumi.ComponentResource {
   constructor(name: string, args: SQSSendMessagePolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:SQSSendMessagePolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -36,7 +40,7 @@ export class SQSSendMessagePolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

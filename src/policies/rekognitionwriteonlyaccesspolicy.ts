@@ -20,6 +20,10 @@ export interface RekognitionWriteOnlyAccessPolicyArgs {
 export class RekognitionWriteOnlyAccessPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: RekognitionWriteOnlyAccessPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:RekognitionWriteOnlyAccessPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -37,7 +41,7 @@ export class RekognitionWriteOnlyAccessPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

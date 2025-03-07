@@ -15,6 +15,10 @@ export interface SESEmailTemplateCrudPolicyArgs {
 export class SESEmailTemplateCrudPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: SESEmailTemplateCrudPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:SESEmailTemplateCrudPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -36,7 +40,7 @@ export class SESEmailTemplateCrudPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

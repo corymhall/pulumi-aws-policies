@@ -20,6 +20,10 @@ export interface SESSendBouncePolicyArgs {
 export class SESSendBouncePolicy extends pulumi.ComponentResource {
   constructor(name: string, args: SESSendBouncePolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:SESSendBouncePolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -36,7 +40,7 @@ export class SESSendBouncePolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

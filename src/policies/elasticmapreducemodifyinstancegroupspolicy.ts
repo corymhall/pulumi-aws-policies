@@ -20,6 +20,10 @@ export interface ElasticMapReduceModifyInstanceGroupsPolicyArgs {
 export class ElasticMapReduceModifyInstanceGroupsPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: ElasticMapReduceModifyInstanceGroupsPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:ElasticMapReduceModifyInstanceGroupsPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -37,7 +41,7 @@ export class ElasticMapReduceModifyInstanceGroupsPolicy extends pulumi.Component
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

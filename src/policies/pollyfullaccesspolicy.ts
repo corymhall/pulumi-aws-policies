@@ -20,6 +20,10 @@ export interface PollyFullAccessPolicyArgs {
 export class PollyFullAccessPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: PollyFullAccessPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:PollyFullAccessPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -49,7 +53,7 @@ export class PollyFullAccessPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

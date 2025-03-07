@@ -20,6 +20,10 @@ export interface KMSEncryptPolicy_v2Args {
 export class KMSEncryptPolicy_v2 extends pulumi.ComponentResource {
   constructor(name: string, args: KMSEncryptPolicy_v2Args, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:KMSEncryptPolicy_v2', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -40,7 +44,7 @@ export class KMSEncryptPolicy_v2 extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

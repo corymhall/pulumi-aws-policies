@@ -15,6 +15,10 @@ export interface RekognitionDetectOnlyPolicyArgs {
 export class RekognitionDetectOnlyPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: RekognitionDetectOnlyPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:RekognitionDetectOnlyPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -34,7 +38,7 @@ export class RekognitionDetectOnlyPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

@@ -15,6 +15,10 @@ export interface RekognitionFacesPolicyArgs {
 export class RekognitionFacesPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: RekognitionFacesPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:RekognitionFacesPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -32,7 +36,7 @@ export class RekognitionFacesPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

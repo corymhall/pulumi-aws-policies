@@ -20,6 +20,10 @@ export interface CodeCommitReadPolicyArgs {
 export class CodeCommitReadPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: CodeCommitReadPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:CodeCommitReadPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -68,7 +72,7 @@ export class CodeCommitReadPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

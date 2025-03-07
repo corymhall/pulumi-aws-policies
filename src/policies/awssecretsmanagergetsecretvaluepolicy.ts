@@ -20,6 +20,10 @@ export interface AWSSecretsManagerGetSecretValuePolicyArgs {
 export class AWSSecretsManagerGetSecretValuePolicy extends pulumi.ComponentResource {
   constructor(name: string, args: AWSSecretsManagerGetSecretValuePolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:AWSSecretsManagerGetSecretValuePolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -36,7 +40,7 @@ export class AWSSecretsManagerGetSecretValuePolicy extends pulumi.ComponentResou
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

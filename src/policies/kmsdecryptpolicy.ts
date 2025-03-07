@@ -20,6 +20,10 @@ export interface KMSDecryptPolicyArgs {
 export class KMSDecryptPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: KMSDecryptPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:KMSDecryptPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -36,7 +40,7 @@ export class KMSDecryptPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

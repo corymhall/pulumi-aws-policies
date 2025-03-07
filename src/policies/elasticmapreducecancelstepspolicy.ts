@@ -20,6 +20,10 @@ export interface ElasticMapReduceCancelStepsPolicyArgs {
 export class ElasticMapReduceCancelStepsPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: ElasticMapReduceCancelStepsPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:ElasticMapReduceCancelStepsPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -36,7 +40,7 @@ export class ElasticMapReduceCancelStepsPolicy extends pulumi.ComponentResource 
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

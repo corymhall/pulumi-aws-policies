@@ -20,6 +20,10 @@ export interface DynamoDBReadPolicyArgs {
 export class DynamoDBReadPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: DynamoDBReadPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:DynamoDBReadPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -41,7 +45,7 @@ export class DynamoDBReadPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }
