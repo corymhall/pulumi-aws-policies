@@ -20,6 +20,10 @@ export interface ElasticMapReduceModifyInstanceFleetPolicyArgs {
 export class ElasticMapReduceModifyInstanceFleetPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: ElasticMapReduceModifyInstanceFleetPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:ElasticMapReduceModifyInstanceFleetPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -37,7 +41,7 @@ export class ElasticMapReduceModifyInstanceFleetPolicy extends pulumi.ComponentR
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

@@ -20,6 +20,10 @@ export interface Route53ChangeResourceRecordSetsPolicyArgs {
 export class Route53ChangeResourceRecordSetsPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: Route53ChangeResourceRecordSetsPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:Route53ChangeResourceRecordSetsPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -36,7 +40,7 @@ export class Route53ChangeResourceRecordSetsPolicy extends pulumi.ComponentResou
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

@@ -15,6 +15,10 @@ export interface EC2DescribePolicyArgs {
 export class EC2DescribePolicy extends pulumi.ComponentResource {
   constructor(name: string, args: EC2DescribePolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:EC2DescribePolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -32,7 +36,7 @@ export class EC2DescribePolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

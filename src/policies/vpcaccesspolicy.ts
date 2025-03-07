@@ -15,6 +15,10 @@ export interface VPCAccessPolicyArgs {
 export class VPCAccessPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: VPCAccessPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:VPCAccessPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -34,7 +38,7 @@ export class VPCAccessPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

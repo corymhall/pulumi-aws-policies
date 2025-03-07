@@ -15,6 +15,10 @@ export interface TextractGetResultPolicyArgs {
 export class TextractGetResultPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: TextractGetResultPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:TextractGetResultPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -32,7 +36,7 @@ export class TextractGetResultPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

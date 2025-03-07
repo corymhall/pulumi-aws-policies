@@ -15,6 +15,10 @@ export interface RekognitionLabelsPolicyArgs {
 export class RekognitionLabelsPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: RekognitionLabelsPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:RekognitionLabelsPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -32,7 +36,7 @@ export class RekognitionLabelsPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

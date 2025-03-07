@@ -20,6 +20,10 @@ export interface DynamoDBBackupFullAccessPolicyArgs {
 export class DynamoDBBackupFullAccessPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: DynamoDBBackupFullAccessPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:DynamoDBBackupFullAccessPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -48,7 +52,7 @@ export class DynamoDBBackupFullAccessPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

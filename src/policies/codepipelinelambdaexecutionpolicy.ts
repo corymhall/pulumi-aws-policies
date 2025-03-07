@@ -15,6 +15,10 @@ export interface CodePipelineLambdaExecutionPolicyArgs {
 export class CodePipelineLambdaExecutionPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: CodePipelineLambdaExecutionPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:CodePipelineLambdaExecutionPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -32,7 +36,7 @@ export class CodePipelineLambdaExecutionPolicy extends pulumi.ComponentResource 
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

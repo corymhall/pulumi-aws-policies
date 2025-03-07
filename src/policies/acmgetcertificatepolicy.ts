@@ -20,6 +20,10 @@ export interface AcmGetCertificatePolicyArgs {
 export class AcmGetCertificatePolicy extends pulumi.ComponentResource {
   constructor(name: string, args: AcmGetCertificatePolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:AcmGetCertificatePolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -36,7 +40,7 @@ export class AcmGetCertificatePolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

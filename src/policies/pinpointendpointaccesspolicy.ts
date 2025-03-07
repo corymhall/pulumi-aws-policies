@@ -20,6 +20,10 @@ export interface PinpointEndpointAccessPolicyArgs {
 export class PinpointEndpointAccessPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: PinpointEndpointAccessPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:PinpointEndpointAccessPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -38,7 +42,7 @@ export class PinpointEndpointAccessPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

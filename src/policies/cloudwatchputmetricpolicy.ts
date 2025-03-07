@@ -15,6 +15,10 @@ export interface CloudWatchPutMetricPolicyArgs {
 export class CloudWatchPutMetricPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: CloudWatchPutMetricPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:CloudWatchPutMetricPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -31,7 +35,7 @@ export class CloudWatchPutMetricPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

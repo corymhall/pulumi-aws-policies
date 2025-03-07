@@ -20,6 +20,10 @@ export interface ElasticMapReduceTerminateJobFlowsPolicyArgs {
 export class ElasticMapReduceTerminateJobFlowsPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: ElasticMapReduceTerminateJobFlowsPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:ElasticMapReduceTerminateJobFlowsPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -36,7 +40,7 @@ export class ElasticMapReduceTerminateJobFlowsPolicy extends pulumi.ComponentRes
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

@@ -54,6 +54,10 @@ export class Code extends SourceCode {
     this.line(
       `super('aws-policies:index:${componentName}', name, args, opts);`,
     );
+    this.open('const opt = {');
+    this.line('parent: this,');
+    this.line('...opts,');
+    this.close('};');
     this.open('new aws.iam.RolePolicy(`${name}-policy`, {');
     this.line('role: args.roleName,');
     this.open('policy: {');
@@ -65,7 +69,7 @@ export class Code extends SourceCode {
 
     this.close('],');
     this.close('}');
-    this.close('}, opts);');
+    this.close('}, opt);');
 
     this.closeCode();
   }

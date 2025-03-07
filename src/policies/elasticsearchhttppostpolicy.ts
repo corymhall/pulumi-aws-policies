@@ -20,6 +20,10 @@ export interface ElasticsearchHttpPostPolicyArgs {
 export class ElasticsearchHttpPostPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: ElasticsearchHttpPostPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:ElasticsearchHttpPostPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -37,7 +41,7 @@ export class ElasticsearchHttpPostPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

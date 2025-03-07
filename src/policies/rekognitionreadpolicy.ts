@@ -20,6 +20,10 @@ export interface RekognitionReadPolicyArgs {
 export class RekognitionReadPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: RekognitionReadPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:RekognitionReadPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -39,7 +43,7 @@ export class RekognitionReadPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

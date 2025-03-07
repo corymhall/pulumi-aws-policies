@@ -20,6 +20,10 @@ export interface S3CrudPolicyArgs {
 export class S3CrudPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: S3CrudPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:S3CrudPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -45,7 +49,7 @@ export class S3CrudPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

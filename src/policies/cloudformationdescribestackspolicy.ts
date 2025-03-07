@@ -15,6 +15,10 @@ export interface CloudFormationDescribeStacksPolicyArgs {
 export class CloudFormationDescribeStacksPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: CloudFormationDescribeStacksPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:CloudFormationDescribeStacksPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -31,7 +35,7 @@ export class CloudFormationDescribeStacksPolicy extends pulumi.ComponentResource
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

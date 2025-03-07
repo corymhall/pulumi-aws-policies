@@ -20,6 +20,10 @@ export interface StepFunctionsExecutionPolicyArgs {
 export class StepFunctionsExecutionPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: StepFunctionsExecutionPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:StepFunctionsExecutionPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -36,7 +40,7 @@ export class StepFunctionsExecutionPolicy extends pulumi.ComponentResource {
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

@@ -20,6 +20,10 @@ export interface ElasticMapReduceSetTerminationProtectionPolicyArgs {
 export class ElasticMapReduceSetTerminationProtectionPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: ElasticMapReduceSetTerminationProtectionPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:ElasticMapReduceSetTerminationProtectionPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -36,7 +40,7 @@ export class ElasticMapReduceSetTerminationProtectionPolicy extends pulumi.Compo
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }

@@ -20,6 +20,10 @@ export interface SageMakerCreateEndpointConfigPolicyArgs {
 export class SageMakerCreateEndpointConfigPolicy extends pulumi.ComponentResource {
   constructor(name: string, args: SageMakerCreateEndpointConfigPolicyArgs, opts?: pulumi.ComponentResourceOptions) {
     super('aws-policies:index:SageMakerCreateEndpointConfigPolicy', name, args, opts);
+    const opt = {
+      parent: this,
+      ...opts,
+    };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
       policy: {
@@ -36,7 +40,7 @@ export class SageMakerCreateEndpointConfigPolicy extends pulumi.ComponentResourc
           },
         ],
       }
-    }, opts);
+    }, opt);
     this.registerOutputs({});
   }
 }
