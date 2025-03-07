@@ -24,7 +24,7 @@ export class Code extends SourceCode {
     if (this.marker) {
       this.line(`// ${this.marker}`);
     }
-    this.line(`import * as aws from '@pulumi/aws';`);
+    this.line(`import * as ccapi from '@pulumi/aws-native';`);
     this.line(`import * as pulumi from '@pulumi/pulumi';`);
     this.line();
     this.open(`export interface ${componentName}Args {`);
@@ -54,9 +54,13 @@ export class Code extends SourceCode {
     this.line(
       `super('aws-policies:index:${componentName}', name, args, opts);`,
     );
-    this.open('new aws.iam.RolePolicy(`${name}-policy`, {');
-    this.line('role: args.roleName,');
-    this.open('policy: {');
+    this.open('const opt = {');
+    this.line('parent: this,');
+    this.line('...opts,');
+    this.close('};');
+    this.open('new ccapi.iam.RolePolicy(`${name}-policy`, {');
+    this.line('roleName: args.roleName,');
+    this.open('policyDocument: {');
     this.line("Version: '2012-10-17',");
     this.open('Statement: [');
     if (info.statements) {
@@ -65,7 +69,7 @@ export class Code extends SourceCode {
 
     this.close('],');
     this.close('}');
-    this.close('}, opts);');
+    this.close('}, opt);');
 
     this.closeCode();
   }
@@ -116,12 +120,9 @@ export class Code extends SourceCode {
       .replace(/Ref\.(\w+)/g, (_, attr) => {
         return `args.${camelCase(attr)}`;
       })
-      .replace(
-        'AWS::AccountId',
-        'aws.getCallerIdentityOutput({}, opts).accountId',
-      )
-      .replace('AWS::Region', 'aws.getRegionOutput({}, opts).name')
-      .replace('AWS::Partition', 'aws.getPartitionOutput({}, opts).partition');
+      .replace('AWS::AccountId', 'ccapi.getAccountIdOutput(opt).accountId')
+      .replace('AWS::Region', 'ccapi.getRegionOutput(opt).region')
+      .replace('AWS::Partition', 'ccapi.getPartitionOutput(opt).partition');
   }
 
   protected getReference(resourceType: string, attribute: string): string {
