@@ -17,7 +17,6 @@ export class MobileAnalyticsWriteOnlyAccessPolicy extends pulumi.ComponentResour
     super('aws-policies:index:MobileAnalyticsWriteOnlyAccessPolicy', name, args, opts);
     const opt = {
       parent: this,
-      ...opts,
     };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,

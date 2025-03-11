@@ -22,7 +22,6 @@ export class EC2CopyImagePolicy extends pulumi.ComponentResource {
     super('aws-policies:index:EC2CopyImagePolicy', name, args, opts);
     const opt = {
       parent: this,
-      ...opts,
     };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,

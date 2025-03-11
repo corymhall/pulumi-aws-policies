@@ -53,7 +53,6 @@ junit.xml
 /dist/version.txt
 !/.github/workflows/release.yml
 dist
-!/.github/workflows/github-release.yml
 !/src/policies/amidescribepolicy.ts
 !/src/policies/awssecretsmanagergetsecretvaluepolicy.ts
 !/src/policies/awssecretsmanagerrotationpolicy.ts

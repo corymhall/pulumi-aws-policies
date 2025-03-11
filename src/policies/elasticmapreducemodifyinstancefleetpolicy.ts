@@ -22,7 +22,6 @@ export class ElasticMapReduceModifyInstanceFleetPolicy extends pulumi.ComponentR
     super('aws-policies:index:ElasticMapReduceModifyInstanceFleetPolicy', name, args, opts);
     const opt = {
       parent: this,
-      ...opts,
     };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,

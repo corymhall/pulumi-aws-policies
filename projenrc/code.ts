@@ -56,7 +56,6 @@ export class Code extends SourceCode {
     );
     this.open('const opt = {');
     this.line('parent: this,');
-    this.line('...opts,');
     this.close('};');
     this.open('new aws.iam.RolePolicy(`${name}-policy`, {');
     this.line('role: args.roleName,');

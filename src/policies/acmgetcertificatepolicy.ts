@@ -22,7 +22,6 @@ export class AcmGetCertificatePolicy extends pulumi.ComponentResource {
     super('aws-policies:index:AcmGetCertificatePolicy', name, args, opts);
     const opt = {
       parent: this,
-      ...opts,
     };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,

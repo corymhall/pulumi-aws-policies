@@ -17,7 +17,6 @@ export class CloudWatchDescribeAlarmHistoryPolicy extends pulumi.ComponentResour
     super('aws-policies:index:CloudWatchDescribeAlarmHistoryPolicy', name, args, opts);
     const opt = {
       parent: this,
-      ...opts,
     };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,

@@ -22,7 +22,6 @@ export class SNSCrudPolicy extends pulumi.ComponentResource {
     super('aws-policies:index:SNSCrudPolicy', name, args, opts);
     const opt = {
       parent: this,
-      ...opts,
     };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,

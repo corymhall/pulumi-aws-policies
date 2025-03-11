@@ -17,7 +17,6 @@ export class TextractPolicy extends pulumi.ComponentResource {
     super('aws-policies:index:TextractPolicy', name, args, opts);
     const opt = {
       parent: this,
-      ...opts,
     };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
