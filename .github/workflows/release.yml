@@ -52,13 +52,43 @@ jobs:
           name: build-artifact
           path: dist
           overwrite: true
-  release_git:
-    name: Publish Git Tag
+  check_tag:
+    name: Check Tag
     needs: release
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    outputs:
+      should_release: ${{ steps.tag-exists.outputs.should_release }}
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+          path: dist
+      - name: Restore build artifact permissions
+        run: cd dist && setfacl --restore=permissions-backup.acl
+        continue-on-error: true
+      - id: tag-exists
+        run: |-
+          TAG=$(cat dist/releasetag.txt)
+          if [ ! -z "$TAG" ]
+          then
+          echo "should_release=true" >> $GITHUB_OUTPUT
+          else
+          echo "should_release=false" >> $GITHUB_OUTPUT
+          fi
+          cat $GITHUB_OUTPUT
+  release_git:
+    name: Publish Git Tag
+    needs:
+      - release
+      - check_tag
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha && needs.check_tag.outputs.should_release == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -84,3 +114,26 @@ jobs:
           RELEASE_TAG_FILE: dist/releasetag.txt
           GITHUB_TOKEN: ${{ secrets.PROJEN_GITHUB_TOKEN }}
         run: npx projen publish:git
+  release_github:
+    name: Publish GitHub Release
+    needs:
+      - release_git
+      - release
+      - check_tag
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha && needs.check_tag.outputs.should_release == 'true'
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+          path: dist
+      - name: Restore build artifact permissions
+        run: cd dist && setfacl --restore=permissions-backup.acl
+        continue-on-error: true
+      - name: Create Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release create $(cat dist/releasetag.txt) --repo ${{ github.repository }} --notes-file dist/changelog.md --title $(cat dist/releasetag.txt) --verify-tag

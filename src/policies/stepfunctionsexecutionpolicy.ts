@@ -22,7 +22,6 @@ export class StepFunctionsExecutionPolicy extends pulumi.ComponentResource {
     super('aws-policies:index:StepFunctionsExecutionPolicy', name, args, opts);
     const opt = {
       parent: this,
-      ...opts,
     };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,

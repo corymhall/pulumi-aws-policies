@@ -17,7 +17,6 @@ export class ComprehendBasicAccessPolicy extends pulumi.ComponentResource {
     super('aws-policies:index:ComprehendBasicAccessPolicy', name, args, opts);
     const opt = {
       parent: this,
-      ...opts,
     };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,

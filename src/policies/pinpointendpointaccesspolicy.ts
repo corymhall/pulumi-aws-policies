@@ -22,7 +22,6 @@ export class PinpointEndpointAccessPolicy extends pulumi.ComponentResource {
     super('aws-policies:index:PinpointEndpointAccessPolicy', name, args, opts);
     const opt = {
       parent: this,
-      ...opts,
     };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,

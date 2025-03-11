@@ -22,7 +22,6 @@ export class CodeCommitCrudPolicy extends pulumi.ComponentResource {
     super('aws-policies:index:CodeCommitCrudPolicy', name, args, opts);
     const opt = {
       parent: this,
-      ...opts,
     };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,

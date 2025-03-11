@@ -22,7 +22,6 @@ export class ElasticsearchHttpPostPolicy extends pulumi.ComponentResource {
     super('aws-policies:index:ElasticsearchHttpPostPolicy', name, args, opts);
     const opt = {
       parent: this,
-      ...opts,
     };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,

@@ -22,7 +22,6 @@ export class Route53ChangeResourceRecordSetsPolicy extends pulumi.ComponentResou
     super('aws-policies:index:Route53ChangeResourceRecordSetsPolicy', name, args, opts);
     const opt = {
       parent: this,
-      ...opts,
     };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,

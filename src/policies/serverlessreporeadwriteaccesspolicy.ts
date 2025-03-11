@@ -17,7 +17,6 @@ export class ServerlessRepoReadWriteAccessPolicy extends pulumi.ComponentResourc
     super('aws-policies:index:ServerlessRepoReadWriteAccessPolicy', name, args, opts);
     const opt = {
       parent: this,
-      ...opts,
     };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,

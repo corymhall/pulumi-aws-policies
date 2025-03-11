@@ -22,7 +22,6 @@ export class S3ReadPolicy extends pulumi.ComponentResource {
     super('aws-policies:index:S3ReadPolicy', name, args, opts);
     const opt = {
       parent: this,
-      ...opts,
     };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,

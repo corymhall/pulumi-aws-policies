@@ -27,7 +27,6 @@ export class SESBulkTemplatedCrudPolicy_v2 extends pulumi.ComponentResource {
     super('aws-policies:index:SESBulkTemplatedCrudPolicy_v2', name, args, opts);
     const opt = {
       parent: this,
-      ...opts,
     };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,

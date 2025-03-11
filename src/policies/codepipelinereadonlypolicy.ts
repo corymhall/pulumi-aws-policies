@@ -22,7 +22,6 @@ export class CodePipelineReadOnlyPolicy extends pulumi.ComponentResource {
     super('aws-policies:index:CodePipelineReadOnlyPolicy', name, args, opts);
     const opt = {
       parent: this,
-      ...opts,
     };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,

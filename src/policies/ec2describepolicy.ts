@@ -17,7 +17,6 @@ export class EC2DescribePolicy extends pulumi.ComponentResource {
     super('aws-policies:index:EC2DescribePolicy', name, args, opts);
     const opt = {
       parent: this,
-      ...opts,
     };
     new aws.iam.RolePolicy(`${name}-policy`, {
       role: args.roleName,
