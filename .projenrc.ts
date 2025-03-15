@@ -1,4 +1,8 @@
-import { TypeScriptComponent } from '@hallcor/pulumi-projen-project-types';
+import {
+  GithubCredentials,
+  PulumiEscSetup,
+  TypeScriptComponent,
+} from '@hallcor/pulumi-projen-project-types';
 import {
   NodePackageManager,
   UpgradeDependenciesSchedule,
@@ -18,8 +22,14 @@ const project = new TypeScriptComponent({
   },
   autoApproveOptions: {
     label: 'auto-approve',
-    allowedUsernames: ['corymhall', 'renovate[bot]'],
+    allowedUsernames: ['corymhall', 'hallcor-projen-bot[bot]'],
   },
+  projenCredentials: GithubCredentials.fromApp({
+    pulumiEscSetup: PulumiEscSetup.fromOidcAuth({
+      environment: 'github/public',
+      organization: 'corymhall',
+    }),
+  }),
   packageManager: NodePackageManager.NPM,
   deps: ['@pulumi/pulumi', '@pulumi/aws-native', '@pulumi/aws'],
   devDeps: ['camelcase', '@hallcor/pulumi-projen-project-types'],
