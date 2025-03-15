@@ -22,7 +22,7 @@ const project = new TypeScriptComponent({
   },
   autoApproveOptions: {
     label: 'auto-approve',
-    allowedUsernames: ['corymhall', 'hallcor-projen-bot[bot]'],
+    allowedUsernames: ['corymhall', 'hallcor-projen-app[bot]'],
   },
   projenCredentials: GithubCredentials.fromApp({
     pulumiEscSetup: PulumiEscSetup.fromOidcAuth({
