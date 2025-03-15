@@ -88,12 +88,32 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      id-token: write
     if: needs.release.outputs.tag_exists != 'true' && needs.release.outputs.latest_commit == github.sha && needs.check_tag.outputs.should_release == 'true'
     steps:
+      - name: Generate Pulumi Access Token
+        id: generate_pulumi_token
+        uses: pulumi/auth-actions@v1
+        with:
+          organization: corymhall
+          requested-token-type: urn:pulumi:token-type:access_token:personal
+          scope: user:corymhall
+          export-environment-variables: false
+      - uses: pulumi/esc-action@v1
+        env:
+          PULUMI_ACCESS_TOKEN: ${{ steps.generate_pulumi_token.outputs.pulumi-access-token }}
+        with:
+          environment: github/public
+      - name: Generate token
+        id: generate_token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ env.PROJEN_APP_CLIENT_ID }}
+          private-key: ${{ env.PROJEN_APP_PRIVATE_KEY }}
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PROJEN_GITHUB_TOKEN }}
+          token: ${{ steps.generate_token.outputs.token }}
           ref: main
       - name: Download artifact
         uses: actions/download-artifact@v4
@@ -112,7 +132,7 @@ jobs:
           VERSION_FILE: dist/version.txt
           CHANGELOG: ""
           RELEASE_TAG_FILE: dist/releasetag.txt
-          GITHUB_TOKEN: ${{ secrets.PROJEN_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
         run: npx projen publish:git
   release_github:
     name: Publish GitHub Release
