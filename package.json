@@ -9,6 +9,7 @@
     "dist": "npx projen dist",
     "eject": "npx projen eject",
     "eslint": "npx projen eslint",
+    "get-schema": "npx projen get-schema",
     "package": "npx projen package",
     "post-compile": "npx projen post-compile",
     "post-upgrade": "npx projen post-upgrade",
@@ -23,7 +24,7 @@
     "projen": "npx projen"
   },
   "devDependencies": {
-    "@hallcor/pulumi-projen-project-types": "^0.0.29",
+    "@hallcor/pulumi-projen-project-types": "^0.0.32",
     "@swc/core": "^1.11.9",
     "@swc/jest": "^0.2.37",
     "@types/jest": "^29.5.14",

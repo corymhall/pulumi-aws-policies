@@ -21,6 +21,9 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
       - name: Install dependencies
         run: npm install
+      - uses: pulumi/actions@v6
+        with:
+          pulumi-version: latest
       - name: build
         run: npx projen build
       - name: Find mutations
