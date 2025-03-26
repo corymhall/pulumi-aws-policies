@@ -31,7 +31,7 @@ const project = new TypeScriptComponent({
     }),
   }),
   packageManager: NodePackageManager.NPM,
-  deps: ['@pulumi/pulumi', '@pulumi/aws-native', '@pulumi/aws'],
+  deps: ['@pulumi/pulumi', '@pulumi/aws'],
   devDeps: ['camelcase', '@hallcor/pulumi-projen-project-types'],
 });
 

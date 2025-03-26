@@ -99,10 +99,6 @@
       "type": "runtime"
     },
     {
-      "name": "@pulumi/aws-native",
-      "type": "runtime"
-    },
-    {
       "name": "@pulumi/pulumi",
       "type": "runtime"
     }
