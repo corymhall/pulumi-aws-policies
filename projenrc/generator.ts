@@ -26,7 +26,7 @@ export class PoliciesGenerator extends Construct {
       );
     }
     new TextFile(this, 'src/policies/index.ts', {
-      lines: exports.map((name) => `export * from './${name}';`),
+      lines: exports.map((name) => `export * from './${name}';`).concat(['']),
     });
   }
 }
