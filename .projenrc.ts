@@ -11,7 +11,7 @@ import { PoliciesGenerator } from './projenrc';
 
 const project = new TypeScriptComponent({
   defaultReleaseBranch: 'main',
-  name: 'aws-policies',
+  name: '@hallcor/aws-policies',
   projenrcTs: true,
   depsUpgradeOptions: {
     workflowOptions: {
@@ -36,5 +36,7 @@ const project = new TypeScriptComponent({
 });
 
 new PoliciesGenerator(project, 'policies');
+
+project.addGitIgnore('examples/**/sdks');
 
 project.synth();

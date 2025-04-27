@@ -1,0 +1,13 @@
+name: lambda-s3
+description: A minimal AWS Connector example
+runtime:
+  name: nodejs
+  options:
+    packagemanager: npm
+plugins:
+  providers:
+    - name: aws-policies
+      path: ../../
+packages:
+  aws-policies: ../../@0.0.0
+  lambda-builders: https://github.com/corymhall/pulumi-lambda-builders@0.1.9

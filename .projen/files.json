@@ -57,6 +57,7 @@
     "src/policies/filterlogeventspolicy.ts",
     "src/policies/firehosecrudpolicy.ts",
     "src/policies/firehosewritepolicy.ts",
+    "src/policies/index.ts",
     "src/policies/kinesiscrudpolicy.ts",
     "src/policies/kinesisstreamreadpolicy.ts",
     "src/policies/kmsdecryptpolicy.ts",

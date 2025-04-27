@@ -1,0 +1,15 @@
+{
+    "name": "lambda-s3",
+    "main": "index.ts",
+    "devDependencies": {
+        "@types/node": "^18",
+        "esbuild": "^0.25.1",
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "@hallcor/aws-policies": "file:sdks/hallcor-aws-policies",
+        "@hallcor/lambda-builders": "file:sdks/hallcor-lambda-builders",
+        "@pulumi/aws": "^6.71.0",
+        "@pulumi/pulumi": "^3.165.0"
+    }
+}

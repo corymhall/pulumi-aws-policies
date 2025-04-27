@@ -62,6 +62,7 @@
 /src/policies/filterlogeventspolicy.ts linguist-generated
 /src/policies/firehosecrudpolicy.ts linguist-generated
 /src/policies/firehosewritepolicy.ts linguist-generated
+/src/policies/index.ts linguist-generated
 /src/policies/kinesiscrudpolicy.ts linguist-generated
 /src/policies/kinesisstreamreadpolicy.ts linguist-generated
 /src/policies/kmsdecryptpolicy.ts linguist-generated
