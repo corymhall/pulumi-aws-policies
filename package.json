@@ -23,10 +23,10 @@
   },
   "devDependencies": {
     "@hallcor/pulumi-projen-project-types": "^0.0.59",
-    "@swc/core": "^1.13.21",
+    "@swc/core": "^1.14.0",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.18.12",
+    "@types/node": "^22.18.13",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
     "camelcase": "^5.3.1",
@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@pulumi/aws": "^6.83.1",
-    "@pulumi/pulumi": "^3.204.0"
+    "@pulumi/pulumi": "^3.205.0"
   },
   "main": "src/index.ts",
   "license": "Apache-2.0",
